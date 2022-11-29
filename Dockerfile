@@ -3,10 +3,10 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS publish
 WORKDIR /src
-COPY ["Skeletrino.Bot.csproj", "Skeletrino.Bot/"]
+COPY ["src/Skeletrino.Bot/Skeletrino.Bot.csproj", "Skeletrino.Bot/"]
 RUN dotnet restore "Skeletrino.Bot/Skeletrino.Bot.csproj"
-COPY . ./src
-WORKDIR "/src/Skeletrino.Bot" 
+COPY . .
+WORKDIR "/src/src/Skeletrino.Bot" 
 RUN dotnet publish "Skeletrino.Bot.csproj" -c Release -o /app/publish
 
 FROM base AS final
