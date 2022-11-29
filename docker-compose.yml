@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  skeletrino:
+    build:
+      context: .
+    image: flexlug/skeletrino:latest
+    restart: always
+    volumes:
+      - /var/docker_data/skeletrino-config:/app/data
