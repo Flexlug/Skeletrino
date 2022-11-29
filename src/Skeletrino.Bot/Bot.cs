@@ -14,6 +14,8 @@ namespace Skeletrino.Bot;
 
 public class Bot : IDisposable
 {
+    public const ulong BOT_ID = 1047230967259082793;
+
     private Settings.Settings _settings { get; }
     
     private DiscordClient _discord;
@@ -62,6 +64,7 @@ public class Bot : IDisposable
             .AddSingleton(_settings)
             .AddSingleton(_discord)
             .AddSingleton<IMessageResendService, MessageResendService>()
+            .AddSingleton<IMessageDeleteService, MessageDeleteService>()
             .AddSingleton<IReactionsService, ReactionsService>()
             .BuildServiceProvider();
     }

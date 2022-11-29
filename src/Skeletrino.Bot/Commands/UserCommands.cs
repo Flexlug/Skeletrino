@@ -2,6 +2,7 @@
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using Microsoft.Extensions.Logging;
+using Skeletrino.Bot.Services;
 using Skeletrino.Bot.Services.Interfaces;
 
 namespace Skeletrino.Bot.Commands;
@@ -10,15 +11,21 @@ public class UserCommands : SkBaseCommandModule
 {
     private ILogger<UserCommands> _logger;
     private IMessageResendService _resendService;
+    private IMessageDeleteService _deleteService;
     private IReactionsService _reactionsService;
     
-    public UserCommands(ILogger<UserCommands> logger, IMessageResendService resendService, IReactionsService reactionsService, DiscordClient client)
+    public UserCommands(ILogger<UserCommands> logger, 
+        IMessageResendService resendService, 
+        IReactionsService reactionsService, 
+        IMessageDeleteService deleteService, 
+        DiscordClient client)
     {
         ModuleName = "Разное";
         
         _logger = logger;
         
         _resendService = resendService;
+        _deleteService = deleteService;
         _reactionsService = reactionsService;
         
         _logger.LogInformation($"{nameof(UserCommands)} loaded");
