@@ -63,8 +63,8 @@ public class Bot : IDisposable
             .AddLogging(conf => conf.AddSerilog(dispose: true))
             .AddSingleton(_settings)
             .AddSingleton(_discord)
-            .AddSingleton<IMessageResendService, MessageResendService>()
-            .AddSingleton<IMessageDeleteService, MessageDeleteService>()
+            // .AddSingleton<IMessageResendService, MessageResendService>()
+            // .AddSingleton<IMessageDeleteService, MessageDeleteService>()
             .AddSingleton<IReactionsService, ReactionsService>()
             .BuildServiceProvider();
     }
